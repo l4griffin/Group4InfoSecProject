@@ -14,4 +14,4 @@ marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorced"
 years_of_experience = st.number_input("Years of Experience", 0, 40)
 
 streamlit run streamlitappgrp4.py
-balls
+

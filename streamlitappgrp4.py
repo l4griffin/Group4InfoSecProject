@@ -21,7 +21,7 @@ data['Job'] = data['Job Title'].astype('category').cat.codes
 data['Education'] = data['Education Level'].astype('category').cat.codes
 data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})
 
-X = data[['Age', 'YearsExperience', 'Job', 'Education', 'Gender']]
+X = data[['Age', 'Years of Experience', 'Job', 'Education', 'Gender']]
 y = data['Salary']
 model = LinearRegression()
 model.fit(X, y)

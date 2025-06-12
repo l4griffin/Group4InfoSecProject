@@ -26,7 +26,7 @@ data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})
 X = data[['Age', 'Years of Experience', 'Job', 'Education', 'Gender']]
 y = data['Salary']
 
-# Remove rows where y is NaN (this is REQUIRED)
+# Remove rows where y is null
 non_nan_mask = ~y.isnull()
 X = X[non_nan_mask]
 y = y[non_nan_mask]

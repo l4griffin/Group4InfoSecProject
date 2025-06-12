@@ -17,7 +17,7 @@ years_of_experience = st.slider("Select Years of Experience", 0.0, 15.0, 3.0, st
 data = pd.read_csv(r"C:\Users\griff\Downloads\salaryData.csv")
 
 # Preprocessing
-data['Job'] = data['Job'].astype('category').cat.codes
+data['Job'] = data['Job Title'].astype('category').cat.codes
 data['Education'] = data['Education'].astype('category').cat.codes
 data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})
 

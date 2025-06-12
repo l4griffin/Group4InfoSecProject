@@ -1,13 +1,14 @@
+#import necessary libraries
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import make_pipeline
 import pandas as pd
-
+# Set a title and a description
 st.title("Group 4: Bio Data Science Project")
 st.write("This is a simple machine learning app created by Group 4.")
 
-# User inputs
+# Gives the user an interface to input their personal data
 first_name = st.text_input("First Name")
 last_name = st.text_input("Last Name")
 gender = st.selectbox("Gender", ["Male", "Female"])
@@ -15,10 +16,10 @@ age = st.number_input("Your Age", 0, 120, 25, 1)
 marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorced", "Widowed"])
 years_of_experience = st.slider("Select Years of Experience", 0.0, 15.0, 3.0, step=0.1)
 
-# Load data
+# Load model data
 data = pd.read_csv(r"C:\Users\griff\Downloads\salaryData.csv")
 
-# Preprocessing
+# Preprocessing the model data ( converting to numerical codes)
 data['Job'] = data['Job Title'].astype('category').cat.codes
 data['Education'] = data['Education Level'].astype('category').cat.codes
 data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})

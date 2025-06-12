@@ -19,7 +19,7 @@ years_of_experience = st.slider("Select Years of Experience", 0.0, 15.0, 3.0, st
 # Load model data
 data = pd.read_csv(r"C:\Users\griff\Downloads\salaryData.csv")
 
-# Preprocessing the model data ( converting to numerical codes)
+# Preprocessing the model data from csv file ( converting to numerical codes)
 data['Job'] = data['Job Title'].astype('category').cat.codes
 data['Education'] = data['Education Level'].astype('category').cat.codes
 data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})
@@ -27,23 +27,23 @@ data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})
 X = data[['Age', 'Years of Experience', 'Job', 'Education', 'Gender']]
 y = data['Salary']
 
-# Remove rows where y is null
+# Remove rows where y is null (eliminating empty rows of data/rows with missing values)
 non_nan_mask = ~y.isnull()
 X = X[non_nan_mask]
 y = y[non_nan_mask]
 
-# Create and fit pipeline with imputer and linear regression
+# Create and fit pipeline with imputer and linear regression(building and training the linear regression model)
 model = make_pipeline(SimpleImputer(strategy='mean'), LinearRegression())
 model.fit(X, y)
 
-# Dropdowns for job and education
+# Dropdowns for job and education(user can select his/her job type & level of education)
 job_list = data['Job Title'].astype('category').cat.categories.tolist()
 edu_list = data['Education Level'].astype('category').cat.categories.tolist()
 
 job = st.selectbox("Job", job_list)
 education = st.selectbox("Education", edu_list)
 
-# Prediction
+# Prediction of salary and displays it to the user using buttons
 col1, col2, col3, col4, col5 = st.columns(5)
 with col3:
     if st.button("Predict Salary"):

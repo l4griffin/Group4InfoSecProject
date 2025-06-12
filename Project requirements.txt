@@ -1,3 +1,9 @@
 Project requirements
 
 For  the predictor to work download the dataset from this URL onto your machine: https://github.com/iujinasena/Wage/blob/main/salaryData.csv
+
+streamlit>=1.0
+
+scikit-learn>=1.0
+
+pandas>=1.3

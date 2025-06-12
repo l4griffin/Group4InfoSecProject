@@ -18,7 +18,7 @@ data = pd.read_csv(r"C:\Users\griff\Downloads\salaryData.csv")
 
 # Preprocessing
 data['Job'] = data['Job Title'].astype('category').cat.codes
-data['Education'] = data['Education'].astype('category').cat.codes
+data['Education'] = data['Education Level'].astype('category').cat.codes
 data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})
 
 X = data[['Age', 'YearsExperience', 'Job', 'Education', 'Gender']]

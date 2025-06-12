@@ -26,13 +26,18 @@ data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})
 X = data[['Age', 'Years of Experience', 'Job', 'Education', 'Gender']]
 y = data['Salary']
 
+# Remove rows where y is NaN (this is REQUIRED)
+non_nan_mask = ~y.isnull()
+X = X[non_nan_mask]
+y = y[non_nan_mask]
+
 # Create and fit pipeline with imputer and linear regression
 model = make_pipeline(SimpleImputer(strategy='mean'), LinearRegression())
 model.fit(X, y)
 
 # Dropdowns for job and education
-job_list = data['Job'].astype('category').cat.categories.tolist()
-edu_list = data['Education'].astype('category').cat.categories.tolist()
+job_list = data['Job Title'].astype('category').cat.categories.tolist()
+edu_list = data['Education Level'].astype('category').cat.categories.tolist()
 
 job = st.selectbox("Job", job_list)
 education = st.selectbox("Education", edu_list)

@@ -17,7 +17,8 @@ marital_status = st.selectbox("Marital Status", ["Single", "Married", "Divorced"
 years_of_experience = st.slider("Select Years of Experience", 0.0, 15.0, 3.0, step=0.1)
 
 # Load model data
-data = pd.read_csv(r"C:\Users\griff\Downloads\salaryData.csv")
+data = pd.read_csv("salaryData.csv")
+
 
 # Preprocessing the model data from csv file ( converting to numerical codes)
 data['Job'] = data['Job Title'].astype('category').cat.codes

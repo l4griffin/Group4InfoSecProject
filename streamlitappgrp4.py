@@ -1,5 +1,7 @@
 import streamlit as st
 from sklearn.linear_model import LinearRegression
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import make_pipeline
 import pandas as pd
 
 st.title("Group 4: Bio Data Science Project")
@@ -23,7 +25,9 @@ data['Gender'] = data['Gender'].map({"Male": 0, "Female": 1})
 
 X = data[['Age', 'Years of Experience', 'Job', 'Education', 'Gender']]
 y = data['Salary']
-model = LinearRegression()
+
+# Create and fit pipeline with imputer and linear regression
+model = make_pipeline(SimpleImputer(strategy='mean'), LinearRegression())
 model.fit(X, y)
 
 # Dropdowns for job and education

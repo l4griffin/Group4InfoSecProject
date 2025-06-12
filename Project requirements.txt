@@ -1,0 +1,3 @@
+Project requirements
+
+For  the predictor to work download the dataset from this URL onto your machine: https://github.com/iujinasena/Wage/blob/main/salaryData.csv
